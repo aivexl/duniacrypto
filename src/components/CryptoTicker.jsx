@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useCoinGecko } from '../CoinGeckoContext';
 
-const API_URL = 'https://api.coincap.io/v2/assets?limit=10';
+const API_URL = 'https://duniacryptoproxy.onrender.com/coincap/v2/assets?limit=10';
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');

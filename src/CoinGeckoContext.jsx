@@ -2,8 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const CoinGeckoContext = createContext();
 
-const COINS_URL = 'https://api.coincap.io/v2/assets?limit=10';
-const GLOBAL_URL = 'https://api.coincap.io/v2/assets';
+const COINS_URL = 'https://duniacryptoproxy.onrender.com/coincap/v2/assets?limit=10';
+const GLOBAL_URL = 'https://duniacryptoproxy.onrender.com/coincap/v2/assets';
 
 export function CoinGeckoProvider({ children }) {
   const [coins, setCoins] = useState(null);
