@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const PLACEHOLDER = '/Asset/duniacrypto.png';
 const GNEWS_API_KEY = '52e430bd78a0701d71d6cfa29d5f760b';
-const API_URL = `/gnews/api/v4/search?q=crypto&lang=en&max=30&token=${GNEWS_API_KEY}`;
+const API_URL = `/api/gnews/api/v4/search?q=crypto&lang=en&max=30&token=${GNEWS_API_KEY}`;
 
 export default function NewsSlider() {
   const [news, setNews] = useState([]);

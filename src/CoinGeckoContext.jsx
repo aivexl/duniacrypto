@@ -2,8 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const CoinGeckoContext = createContext();
 
-const COINS_URL = '/coingecko/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
-const GLOBAL_URL = '/coingecko/api/v3/global';
+const COINS_URL = '/api/coingecko/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
+const GLOBAL_URL = '/api/coingecko/api/v3/global';
 
 export function CoinGeckoProvider({ children }) {
   const [coins, setCoins] = useState(null);
