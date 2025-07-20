@@ -1,3 +1,35 @@
+# Dunia Crypto Dashboard
+
+## Penting untuk Deployment ke Vercel
+
+1. **Asset Logo dan Gambar**
+   - Pindahkan file `Asset/duniacrypto.png` ke folder `public/Asset/duniacrypto.png`.
+   - Semua asset gambar yang ingin diakses di web harus berada di dalam folder `public/`.
+
+2. **Proxy API (Vite)**
+   - Untuk development lokal, proxy sudah bisa digunakan di `vite.config.js`.
+   - Untuk deployment ke Vercel, gunakan [Vercel rewrites](https://vercel.com/docs/projects/project-configuration#project-configuration/rewrites) di file `vercel.json` agar request `/coingecko/*` dan `/gnews/*` diteruskan ke API eksternal.
+   - Contoh `vercel.json`:
+     ```json
+     {
+       "rewrites": [
+         { "source": "/coingecko/:path*", "destination": "https://api.coingecko.com/:path*" },
+         { "source": "/gnews/:path*", "destination": "https://gnews.io/:path*" }
+       ]
+     }
+     ```
+   - Letakkan file `vercel.json` di root project.
+
+3. **Langkah Deploy ke Vercel**
+   - Pastikan asset sudah di `public/Asset/`.
+   - Tambahkan file `vercel.json` seperti di atas.
+   - Push ke GitHub, lalu hubungkan repo ke Vercel.
+   - Deploy!
+
+---
+
+## Sisa instruksi project ...
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
