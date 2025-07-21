@@ -2,8 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const CoinGeckoContext = createContext();
 
-const COINS_URL = 'https://duniacryptoproxy.onrender.com/coingecko/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
-const GLOBAL_URL = 'https://duniacryptoproxy.onrender.com/coingecko/api/v3/global';
+const COINS_URL = 'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
+const GLOBAL_URL = 'https://api.coingecko.com/api/v3/global';
 
 export function CoinGeckoProvider({ children }) {
   const [coins, setCoins] = useState(null);
@@ -61,7 +61,7 @@ export function CoinGeckoProvider({ children }) {
 
   useEffect(() => {
     fetchAll();
-    const interval = setInterval(fetchAll, 5 * 60 * 60 * 1000); // 5 hours
+    const interval = setInterval(fetchAll, 24 * 60 * 60 * 1000); // 24 jam
     return () => clearInterval(interval);
   }, []);
 
