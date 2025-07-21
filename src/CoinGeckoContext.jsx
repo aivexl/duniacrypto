@@ -2,8 +2,8 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 
 const CoinGeckoContext = createContext();
 
-const COINS_URL = 'https://duniacryptoproxy.onrender.com/coincap/v2/assets?limit=10';
-const GLOBAL_URL = 'https://duniacryptoproxy.onrender.com/coincap/v2/assets';
+const COINS_URL = 'https://duniacryptoproxy.onrender.com/coingecko/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false';
+const GLOBAL_URL = 'https://duniacryptoproxy.onrender.com/coingecko/api/v3/global';
 
 export function CoinGeckoProvider({ children }) {
   const [coins, setCoins] = useState(null);
@@ -25,23 +25,23 @@ export function CoinGeckoProvider({ children }) {
       const globalData = await globalRes.json();
       
       // Transform CoinCap data to match CoinGecko format
-      const transformedCoins = coinsData.data.map((coin, index) => ({
+      const transformedCoins = coinsData.map((coin, index) => ({
         id: coin.id,
         symbol: coin.symbol,
         name: coin.name,
         image: `https://assets.coincap.io/assets/icons/${coin.symbol.toLowerCase()}@2x.png`,
-        current_price: parseFloat(coin.priceUsd),
-        market_cap: parseFloat(coin.marketCapUsd),
+        current_price: parseFloat(coin.current_price),
+        market_cap: parseFloat(coin.market_cap),
         market_cap_rank: index + 1,
-        price_change_percentage_24h: parseFloat(coin.changePercent24Hr),
-        total_volume: parseFloat(coin.volumeUsd24Hr),
+        price_change_percentage_24h: parseFloat(coin.price_change_percentage_24h),
+        total_volume: parseFloat(coin.total_volume),
       }));
       
       // Calculate global market data
-      const totalMarketCap = globalData.data.reduce((sum, coin) => sum + parseFloat(coin.marketCapUsd), 0);
-      const totalVolume = globalData.data.reduce((sum, coin) => sum + parseFloat(coin.volumeUsd24Hr), 0);
-      const btcData = globalData.data.find(coin => coin.symbol === 'BTC');
-      const btcDominance = btcData ? (parseFloat(btcData.marketCapUsd) / totalMarketCap) * 100 : 0;
+      const totalMarketCap = globalData.data.total_market_cap.usd;
+      const totalVolume = globalData.data.total_volume.usd;
+      const btcData = globalData.data.market_cap_percentage.btc;
+      const btcDominance = btcData ? parseFloat(btcData) : 0;
       
       setCoins(transformedCoins);
       setGlobal({
