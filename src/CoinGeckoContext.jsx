@@ -20,7 +20,7 @@ export function CoinGeckoProvider({ children }) {
         fetch(COINS_URL),
         fetch(GLOBAL_URL),
       ]);
-      if (!coinsRes.ok || !globalRes.ok) throw new Error('Failed to fetch CoinCap data');
+      if (!coinsRes.ok || !globalRes.ok) throw new Error('Failed to fetch CoinGecko data. Please try again later.');
       const coinsData = await coinsRes.json();
       const globalData = await globalRes.json();
       
@@ -53,7 +53,7 @@ export function CoinGeckoProvider({ children }) {
         }
       });
     } catch (e) {
-      setError(e);
+      setError('Failed to fetch CoinGecko data. Please try again later.');
     } finally {
       setLoading(false);
     }
