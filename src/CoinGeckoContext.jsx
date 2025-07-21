@@ -24,7 +24,7 @@ export function CoinGeckoProvider({ children }) {
       const coinsData = await coinsRes.json();
       const globalData = await globalRes.json();
       
-      // Transform CoinCap data to match CoinGecko format
+      // Transformasi hanya untuk coins, global langsung dari CoinGecko
       const transformedCoins = coinsData.map((coin, index) => ({
         id: coin.id,
         symbol: coin.symbol,
@@ -37,21 +37,8 @@ export function CoinGeckoProvider({ children }) {
         total_volume: parseFloat(coin.total_volume),
       }));
       
-      // Calculate global market data
-      const totalMarketCap = globalData.data.total_market_cap.usd;
-      const totalVolume = globalData.data.total_volume.usd;
-      const btcData = globalData.data.market_cap_percentage.btc;
-      const btcDominance = btcData ? parseFloat(btcData) : 0;
-      
       setCoins(transformedCoins);
-      setGlobal({
-        data: {
-          total_market_cap: { usd: totalMarketCap },
-          total_volume: { usd: totalVolume },
-          market_cap_percentage: { btc: btcDominance },
-          market_cap_change_percentage_24h_usd: 0, // CoinCap doesn't provide this
-        }
-      });
+      setGlobal(globalData.data);
     } catch (e) {
       setError('Failed to fetch CoinGecko data. Please try again later.');
     } finally {
