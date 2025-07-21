@@ -1,0 +1,25 @@
+.tableRoot {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #161B22;
+  box-shadow: 0 2px 8px 0 #0002;
+}
+.tableHeader {
+  background: #222;
+  color: #fff;
+  font-weight: bold;
+}
+.tableRow {
+  border-bottom: 1px solid #222;
+}
+.tableCell {
+  padding: 8px 12px;
+  font-size: 14px;
+}
+.positive {
+  color: #22C55E;
+}
+.negative {
+  color: #EF4444;
+} 

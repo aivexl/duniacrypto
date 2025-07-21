@@ -1,0 +1,42 @@
+.mindshareRoot {
+  background: #161B22;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px 0 #0002;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.mindshareTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.mindshareList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.mindshareItem {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid #222;
+  padding-bottom: 8px;
+}
+.mindshareImage {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+.mindshareName {
+  font-weight: bold;
+  color: #fff;
+}
+.mindshareSymbol {
+  color: #aaa;
+  text-transform: uppercase;
+}
+.mindshareRank {
+  margin-left: auto;
+  font-size: 12px;
+  color: #aaa;
+} 

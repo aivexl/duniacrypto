@@ -1,0 +1,25 @@
+.marketOverviewRoot {
+  background: #161B22;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px 0 #0002;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+.marketOverviewTitle {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.marketOverviewRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.marketOverviewLabel {
+  color: #aaa;
+}
+.marketOverviewValue {
+  font-family: monospace;
+  color: #fff;
+} 
